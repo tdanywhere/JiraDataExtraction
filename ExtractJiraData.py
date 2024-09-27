@@ -1,25 +1,26 @@
 import requests 
 from requests.auth import HTTPBasicAuth
-import yaml
-
+import json
 import JsonFactory
 
+import yaml
 
-# Read configuration from Yaml.
+# Read configuration from YAML.
 with open('./yaml/jira_access.yaml', 'r') as file:
-    prime_service = yaml.safe_load(file)
+    config = yaml.safe_load(file)
 
 # Replace these variables with your Jira information.
-jira_url = prime_service['jira_url']
-max_results = prime_service['max_results']
-username = prime_service['username']
-api_token = prime_service['api_token']
+jira_base_url = config['jira_base_url']
+jira_filter = config['jira_filter']
+max_results = config['max_results']
+username = config['username']
+api_token = config['api_token']
 
 # Path to generated File.
-path_to_json_file = prime_service['path_to_json_file']
+path_to_json_file = config['path_to_json_file']
 
 # Combine the URL and endpoint
-url = jira_url + max_results
+url = jira_base_url + jira_filter + str(max_results)
 
 # Send the request
 response = requests.get(url, auth=HTTPBasicAuth(username, api_token))

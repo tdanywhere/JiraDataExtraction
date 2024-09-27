@@ -1,5 +1,6 @@
-jira_url: https://jira-hoyer.apps.teamworkx.cloud/rest/api/2/search?jql=project%20=%20%22HOYER%20Vista%22%20AND%20type%20not%20in%20(Task,%20%22Regression%20Test%22)%20AND%20cf[10910]%20not%20in%20(%22eB%22,%20%22DBA%22)%20AND%20status%20not%20in%20(New,%20Approved,%20%22In%20Analysis%22)%20AND%20(created%20%3E=%20startOfYear()%20or%20updated%20%3E=%20startOfYear()%20)%20&expand=changelog&maxResults=
-max_results: '100'
+jira_base_url: https://jira-hoyer.apps.teamworkx.cloud/rest/api/2/search?jql=
+jira_filter: project = "HOYER Vista" AND type not in (Task,"Regression Test","Unit Test") AND cf[10910] not in ("eB","DBA") AND status not in (New,Approved,"In Analysis") AND (created >= startOfYear() or updated >= startOfYear()) AND (fixVersion>53-90-10 or fixVersion is EMPTY)&expand=changelog&maxResults=
+max_results: 2500
 username: 
 api_token: 
-path_to_json_file: './output/output.json'
+path_to_json_file: ./output/jira_-_restApiResponse.json

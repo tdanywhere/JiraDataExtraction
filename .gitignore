@@ -1,2 +1,3 @@
 __pycache__/
-/yaml/jira_access.yaml.private
+output/jira_-_restApiResponse.json
+yaml/jira_access.yaml.private
